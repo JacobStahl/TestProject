@@ -31,7 +31,7 @@ public class kundTest {
 	}
 	
 	@Test
-	public void checkConstructorInput(){
+	public void checkGetMethods(){
 		assertEquals(kundNr, k.getKundNr());
 		assertEquals(forNamn, k.getForNamn());
 		assertEquals(efterNamn, k.getEfterNamn());
