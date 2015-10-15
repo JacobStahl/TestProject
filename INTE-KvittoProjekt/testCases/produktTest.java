@@ -10,10 +10,10 @@ private Produkt p;
 	int produktNr;
 	String produktNamn;
 	String produktTyp;
-	double pris;
+	int pris;
 	
 	@Before
-	public void setUp(){
+	public void produktSetUp(){
 		produktNr = 123;
 		produktNamn = "Mjölk";
 		produktTyp = "Mejeri";
