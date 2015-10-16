@@ -58,6 +58,10 @@ public class kundTest {
 		assertEquals(efterNamn, k.getEfterNamn());
 		assertEquals(telefonNummer, k.getTelefonNummer());
 		assertEquals(adress, k.getAdress());
+		
+		
 	}
+	
+	
 
 }
