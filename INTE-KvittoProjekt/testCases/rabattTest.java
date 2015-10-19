@@ -6,60 +6,77 @@ import org.junit.Test;
 
 public class rabattTest {
 
-	private Rabatter r;
+	
+	private Kund k;
+	private Produkt p;
+	
+	private int kundNr;
+	private String forNamn;
+	private String efterNamn;
+	private String telefonNummer;
+	private String adress;
+	private int rabattTypKund;
 	
 	
-	String rabattTyp;
-	int rabattProcent;
-    int rabattMultipel; 
-    
-    @Before 
-    public void rabattSetUp()
-    {
-		rabattTyp = "Ta två betala för en";
-		rabattProcent = 25;
-		rabattMultipel = 100;
+	public void setUpKund(){
+		kundNr = 123;
+		forNamn = "Johan";
+		efterNamn = "Svensson";
+		telefonNummer = "070 253 25 34";
+		adress = "Stenvägen 4";
+		rabattTypKund = 0;
 		
-		r = new Rabatter(rabattTyp, rabattProcent, rabattMultipel);
-    }
-		
-
-	
-	@Test
-	public void checkIfRabatterIsNull() {
-		assertNotNull(r);
-	}
-
-	
-	@Test
-	public void checkGetMethods(){
-		assertEquals(rabattTyp, r.getrabattTyp());
-		assertEquals(rabattProcent, r.getrabattProcent());
-		assertEquals(rabattMultipel, r.getrabattMultipel());
-		
-	
+		k = new Kund(kundNr, forNamn, efterNamn, telefonNummer, adress, rabattTypKund);
 	}
 	
-	@Test
-	public void checkSetMethods()
-	{
-		rabattTyp = "2 för 1";
-		rabattProcent = 25;
-		rabattMultipel = 100;
-		
-		
-		r.setrabattTyp(rabattTyp);
-		r.setrabattProcent(rabattProcent);
-		r.setrabattMultipel(rabattMultipel);
-		
+	private int produktNr;
+	private String produktNamn;
+	private String produktTyp;
+	private float pris;
+	private int rabattTypProdukt;
+	private float rabattKronor;
 	
+	
+	@Test
+	public void testKundRabatt(){
+		Rabatt rabatt = new Rabatt();
+		setUpKund();
 		
-		assertEquals(rabattTyp, r.getrabattTyp());
-		assertEquals(rabattProcent, r.getrabattProcent());
-		assertEquals(rabattMultipel, r.getrabattMultipel());
-		
-		
+		assertEquals(10, rabatt.beraknaKundRabatt(k, 100), 0f);
 	}
-
+	
+	@Test
+	public void testTreForTva(){
+		produktNr = 1;
+		produktNamn = "Gurka";
+		produktTyp = "Grönsak";
+		pris = 5.5f;
+		rabattTypProdukt = 0;
+		rabattKronor = 0;
+		
+		p = new Produkt(produktNr, produktNamn, produktTyp, pris, rabattTypProdukt, rabattKronor);
+		Rabatt rabatt = new Rabatt();
+		
+		float kalk = rabatt.beraknaProduktRabatt(p, 3);
+		
+		assertEquals(5.5f, kalk, 0f);
+	}
+	
+	@Test
+	public void testRabattKronor(){
+		produktNr = 1;
+		produktNamn = "Gurka";
+		produktTyp = "Grönsak";
+		pris = 5.5f;
+		rabattTypProdukt = 1;
+		rabattKronor = 3.2f;
+		
+		p = new Produkt(produktNr, produktNamn, produktTyp, pris, rabattTypProdukt, rabattKronor);
+		Rabatt rabatt = new Rabatt();
+		
+		float kalk = rabatt.beraknaProduktRabatt(p, 3);
+		
+		assertEquals((3.2f*3), kalk, 0f);
+	}
 	
 }

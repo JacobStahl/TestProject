@@ -14,7 +14,7 @@ public class kundTest {
 	String telefonNummer;
 	String adress;
 	
-	@Before
+	
 	public void setUp(){
 		kundNr = 123;
 		forNamn = "Johan";
@@ -27,11 +27,13 @@ public class kundTest {
 	
 	@Test
 	public void checkIfNull() {
+		setUp();
 		assertNotNull(k);
 	}
 	
 	@Test
 	public void checkGetMethods(){
+		setUp();
 		assertEquals(kundNr, k.getKundNr());
 		assertEquals(forNamn, k.getForNamn());
 		assertEquals(efterNamn, k.getEfterNamn());
@@ -41,6 +43,7 @@ public class kundTest {
 	
 	@Test
 	public void checkSetMethods(){
+		setUp();
 		kundNr = 234;
 		forNamn = "Stefan";
 		efterNamn = "Andersson";

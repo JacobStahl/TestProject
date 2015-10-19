@@ -10,10 +10,10 @@ private Produkt p;
 	int produktNr;
 	String produktNamn;
 	String produktTyp;
-	int pris;
+	float pris;
 	
-	@Before
-	public void produktSetUp(){
+	
+	public void setUp(){
 		produktNr = 123;
 		produktNamn = "Mjölk";
 		produktTyp = "Mejeri";
@@ -25,20 +25,23 @@ private Produkt p;
 
 	@Test
 	public void checkIfProduktIsNull() {
+		setUp();
 		assertNotNull(p);
 	}
 	
 	@Test
 	public void checkGetMethods(){
+		setUp();
 		assertEquals(produktNr, p.getProduktNr());
 		assertEquals(produktNamn, p.getProduktNamn());
 		assertEquals(produktTyp, p.getProduktTyp());
-		assertEquals(pris, p.getPris());
+		assertEquals(pris, p.getPris(), 0f);
 	
 	}
 	
 	@Test
 	public void checkSetMethods(){
+		setUp();
 		produktNr = 1441;
 		produktNamn = "Skinka";
 		produktTyp = "Chark";
@@ -53,7 +56,7 @@ private Produkt p;
 		assertEquals(produktNr, p.getProduktNr());
 		assertEquals(produktNamn, p.getProduktNamn());
 		assertEquals(produktTyp, p.getProduktTyp());
-		assertEquals(pris, p.getPris());
+		assertEquals(pris, p.getPris(), 0f);
 		
 	}
 

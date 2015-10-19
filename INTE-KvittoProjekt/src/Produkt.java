@@ -4,15 +4,28 @@ public class Produkt {
 	private int produktNr;
 	private String produktNamn;
 	private String produktTyp;
-	private int pris;
+	private float pris;
+	private int rabattTyp;
+	private float rabattKronor;
 	
 	
-	public Produkt(int produktNr, String produktNamn, String produktTyp, int pris){
+	public Produkt(int produktNr, String produktNamn, String produktTyp, float pris){
 		
 		this.produktNr = produktNr;
 		this.produktNamn = produktNamn;
 		this.produktTyp = produktTyp;
 		this.pris = pris;
+		
+	}
+	
+public Produkt(int produktNr, String produktNamn, String produktTyp, float pris, int rabattTyp, float rabattKronor){
+		
+		this.produktNr = produktNr;
+		this.produktNamn = produktNamn;
+		this.produktTyp = produktTyp;
+		this.pris = pris;
+		this.rabattTyp = rabattTyp;
+		this.rabattKronor = rabattKronor;
 		
 	}
 	
@@ -46,14 +59,21 @@ public class Produkt {
 		return produktTyp;
 	}
 	
-	public void setPris(int pris)
+	public void setPris(float pris)
 	{
 		this.pris = pris;
 	}
 	
-	public int getPris()
+	public float getPris()
 	{
 		return pris;
 	}
 	
+	public int getRabattTyp(){
+		return rabattTyp;
+	}
+	
+	public float getRabattKronor(){
+		return rabattKronor;
+	}
 }

@@ -1,52 +1,46 @@
 
-public class Rabatter {
+public class Rabatt {
 
-	private String rabattTyp;
-	private int rabattProcent;
-	private int rabattMultipel; 
+	private int rabattTyp;
 	
-	
-	public Rabatter(String rabattTyp, int rabattProcent, int rabattMultipel)
-	{
-		this.rabattTyp = rabattTyp;
-		this.rabattProcent = rabattProcent;
-		this.rabattMultipel = rabattMultipel;
+	public float beraknaProduktRabatt(Produkt produkt, int mangd){
+		
+		this.rabattTyp = produkt.getRabattTyp();
+		
+		switch (rabattTyp) {
+		case 0:
+			return treForTva(produkt, mangd);
+		case 1:
+			return rabattKronor(produkt, mangd);
+		default:
+			return 0f;
+		}
 	}
 	
-	public void setrabattTyp(String rabattTyp)
-	{
-		this.rabattTyp = rabattTyp;		
+	private float treForTva(Produkt produkt, int mangd){
+		int kalk;
+		kalk = mangd / 3;
+		return kalk * produkt.getPris();
 	}
 	
-	public String getrabattTyp()
-	{
-		return rabattTyp;
+	private float rabattKronor(Produkt produkt, int mangd){
+		return produkt.getRabattKronor() * mangd;
 	}
 	
-	public void setrabattProcent(int rabattProcent)
-	{
-		this.rabattProcent = rabattProcent;		
+	public float beraknaKundRabatt(Kund kund, float totalPris){
+		
+		this.rabattTyp = kund.getRabattTyp();
+		
+		switch (rabattTyp){
+		case 0:
+			return tioProcentRabatt(totalPris);
+		default:
+			return 0f;
+		}
 	}
 	
-	public int getrabattProcent()
-	{
-		return rabattProcent;
+	private float tioProcentRabatt(float totalPris){
+		return totalPris * 0.1f;
 	}
-	
-	public void setrabattMultipel(int rabattMultipel)
-	{
-		this.rabattMultipel = rabattMultipel;		
-	}
-
-	
-	public int getrabattMultipel()
-	{
-		return rabattMultipel;
-	}
-	
-	
-	
-	
-	
 	
 }

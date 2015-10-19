@@ -6,6 +6,7 @@ public class Kund {
 	private String efterNamn;
 	private String telefonNummer;
 	private String adress;
+	private int rabattTyp;
 	
 	public Kund(int kundNr, String forNamn, String efterNamn, String telefonNummer, String adress){
 		this.kundNr = kundNr;
@@ -13,6 +14,16 @@ public class Kund {
 		this.efterNamn = efterNamn;
 		this.telefonNummer = telefonNummer;
 		this.adress = adress;
+		
+	}
+	
+	public Kund(int kundNr, String forNamn, String efterNamn, String telefonNummer, String adress, int rabattTyp){
+		this.kundNr = kundNr;
+		this.forNamn = forNamn;
+		this.efterNamn = efterNamn;
+		this.telefonNummer = telefonNummer;
+		this.adress = adress;
+		this.rabattTyp = rabattTyp;
 		
 	}
 	
@@ -55,5 +66,11 @@ public class Kund {
 	public void setAdress(String adress){
 		this.adress = adress;
 	}
+
+	public int getRabattTyp() {
+		return rabattTyp;
+	}
+	
+	
 	
 }
