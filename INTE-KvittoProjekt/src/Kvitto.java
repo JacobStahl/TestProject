@@ -15,4 +15,16 @@ public class Kvitto {
 		produkter = new ArrayList<Produkt>();
 	}
 	
+	public void addProdukt(Produkt produkt){
+		produkter.add(produkt);
+	}
+	
+	public void removeProdukt(Produkt produkt){
+		produkter.remove(produkt);
+	}
+	
+	public ArrayList<Produkt> getProdukter(){
+		ArrayList<Produkt> returLista = new ArrayList<Produkt>(produkter);
+		return returLista;
+	}
 }
