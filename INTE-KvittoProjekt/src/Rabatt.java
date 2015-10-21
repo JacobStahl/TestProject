@@ -3,7 +3,7 @@ public class Rabatt {
 
 	private int rabattTyp;
 	
-	public float beraknaProduktRabatt(Produkt produkt, int mangd){
+	public double beraknaProduktRabatt(Produkt produkt, int mangd){
 		
 		this.rabattTyp = produkt.getRabattTyp();
 		
@@ -17,17 +17,17 @@ public class Rabatt {
 		}
 	}
 	
-	private float treForTva(Produkt produkt, int mangd){
+	private double treForTva(Produkt produkt, int mangd){
 		int kalk;
 		kalk = mangd / 3;
 		return kalk * produkt.getPris();
 	}
 	
-	private float rabattKronor(Produkt produkt, int mangd){
+	private double rabattKronor(Produkt produkt, int mangd){
 		return produkt.getRabattKronor() * mangd;
 	}
 	
-	public float beraknaKundRabatt(Kund kund, float totalPris){
+	public double beraknaKundRabatt(Kund kund, double totalPris){
 		
 		this.rabattTyp = kund.getRabattTyp();
 		
@@ -39,7 +39,7 @@ public class Rabatt {
 		}
 	}
 	
-	private float tioProcentRabatt(float totalPris){
+	private double tioProcentRabatt(double totalPris){
 		return totalPris * 0.1f;
 	}
 	

@@ -10,7 +10,7 @@ private Produkt p;
 	int produktNr;
 	String produktNamn;
 	String produktTyp;
-	float pris;
+	double pris;
 	
 	
 	public void setUp(){

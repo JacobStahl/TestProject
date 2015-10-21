@@ -4,12 +4,12 @@ public class Produkt {
 	private int produktNr;
 	private String produktNamn;
 	private String produktTyp;
-	private float pris;
+	private double pris;
 	private int rabattTyp;
-	private float rabattKronor;
+	private double rabattKronor;
 	
 	
-	public Produkt(int produktNr, String produktNamn, String produktTyp, float pris){
+	public Produkt(int produktNr, String produktNamn, String produktTyp, double pris){
 		
 		this.produktNr = produktNr;
 		this.produktNamn = produktNamn;
@@ -18,7 +18,7 @@ public class Produkt {
 		
 	}
 	
-public Produkt(int produktNr, String produktNamn, String produktTyp, float pris, int rabattTyp, float rabattKronor){
+public Produkt(int produktNr, String produktNamn, String produktTyp, double pris, int rabattTyp, double rabattKronor){
 		
 		this.produktNr = produktNr;
 		this.produktNamn = produktNamn;
@@ -59,12 +59,12 @@ public Produkt(int produktNr, String produktNamn, String produktTyp, float pris,
 		return produktTyp;
 	}
 	
-	public void setPris(float pris)
+	public void setPris(double pris)
 	{
 		this.pris = pris;
 	}
 	
-	public float getPris()
+	public double getPris()
 	{
 		return pris;
 	}
@@ -73,7 +73,7 @@ public Produkt(int produktNr, String produktNamn, String produktTyp, float pris,
 		return rabattTyp;
 	}
 	
-	public float getRabattKronor(){
+	public double getRabattKronor(){
 		return rabattKronor;
 	}
 }

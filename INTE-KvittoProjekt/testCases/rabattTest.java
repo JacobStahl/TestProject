@@ -32,9 +32,9 @@ public class rabattTest {
 	private int produktNr;
 	private String produktNamn;
 	private String produktTyp;
-	private float pris;
+	private double pris;
 	private int rabattTypProdukt;
-	private float rabattKronor;
+	private double rabattKronor;
 	
 	
 	@Test
@@ -57,7 +57,7 @@ public class rabattTest {
 		p = new Produkt(produktNr, produktNamn, produktTyp, pris, rabattTypProdukt, rabattKronor);
 		Rabatt rabatt = new Rabatt();
 		
-		float kalk = rabatt.beraknaProduktRabatt(p, 3);
+		double kalk = rabatt.beraknaProduktRabatt(p, 3);
 		
 		assertEquals(5.5f, kalk, 0f);
 	}
@@ -74,7 +74,7 @@ public class rabattTest {
 		p = new Produkt(produktNr, produktNamn, produktTyp, pris, rabattTypProdukt, rabattKronor);
 		Rabatt rabatt = new Rabatt();
 		
-		float kalk = rabatt.beraknaProduktRabatt(p, 3);
+		double kalk = rabatt.beraknaProduktRabatt(p, 3);
 		
 		assertEquals((3.2f*3), kalk, 0f);
 	}
