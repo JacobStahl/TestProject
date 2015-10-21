@@ -33,6 +33,7 @@ public class rabattTest {
 	private String produktNamn;
 	private String produktTyp;
 	private double pris;
+	private int mangd;
 	private int rabattTypProdukt;
 	private double rabattKronor;
 	
@@ -51,13 +52,14 @@ public class rabattTest {
 		produktNamn = "Gurka";
 		produktTyp = "Grönsak";
 		pris = 5.5f;
+		mangd = 1;
 		rabattTypProdukt = 0;
 		rabattKronor = 0;
 		
-		p = new Produkt(produktNr, produktNamn, produktTyp, pris, rabattTypProdukt, rabattKronor);
+		p = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd, rabattTypProdukt, rabattKronor);
 		Rabatt rabatt = new Rabatt();
 		
-		double kalk = rabatt.beraknaProduktRabatt(p, 3);
+		double kalk = rabatt.beraknaProduktRabatt(p);
 		
 		assertEquals(5.5f, kalk, 0f);
 	}
@@ -68,15 +70,16 @@ public class rabattTest {
 		produktNamn = "Gurka";
 		produktTyp = "Grönsak";
 		pris = 5.5f;
+		mangd = 3;
 		rabattTypProdukt = 1;
 		rabattKronor = 3.2f;
 		
-		p = new Produkt(produktNr, produktNamn, produktTyp, pris, rabattTypProdukt, rabattKronor);
+		p = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd, rabattTypProdukt, rabattKronor);
 		Rabatt rabatt = new Rabatt();
 		
-		double kalk = rabatt.beraknaProduktRabatt(p, 3);
+		double kalk = rabatt.beraknaProduktRabatt(p);
 		
-		assertEquals((3.2f*3), kalk, 0f);
+		assertEquals((3.2f*mangd), kalk, 0f);
 	}
 	
 }

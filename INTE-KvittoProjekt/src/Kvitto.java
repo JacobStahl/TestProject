@@ -15,6 +15,11 @@ public class Kvitto {
 		produkter = new ArrayList<Produkt>();
 	}
 	
+	public double beraknaRabatt(Produkt produkt){
+		Rabatt rabatt = new Rabatt();
+		return rabatt.beraknaProduktRabatt(produkt);
+	}
+	
 	public void addProdukt(Produkt produkt){
 		produkter.add(produkt);
 	}
@@ -27,4 +32,17 @@ public class Kvitto {
 		ArrayList<Produkt> returLista = new ArrayList<Produkt>(produkter);
 		return returLista;
 	}
+	
+	public Date getDate(){
+		return datum;
+	}
+	
+	public double getTotalPris(){
+		totalPris = 0;
+		for(Produkt produkt : produkter){
+			totalPris += produkt.getPris() * produkt.getMangd();
+		}
+		return totalPris;
+	}
+	
 }

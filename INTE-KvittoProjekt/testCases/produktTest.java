@@ -7,10 +7,11 @@ public class produktTest {
 	
 private Produkt p;
 	
-	int produktNr;
-	String produktNamn;
-	String produktTyp;
-	double pris;
+	private int produktNr;
+	private String produktNamn;
+	private String produktTyp;
+	private double pris;
+	private int mangd;
 	
 	
 	public void setUp(){
@@ -18,9 +19,9 @@ private Produkt p;
 		produktNamn = "Mjölk";
 		produktTyp = "Mejeri";
 		pris = 12;
+		mangd = 1;
 		
-		
-		p = new Produkt(produktNr, produktNamn, produktTyp, pris);
+		p = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd);
 	}
 
 	@Test
