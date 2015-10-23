@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 
 public class Produkt {
 	
@@ -94,5 +96,10 @@ public Produkt(int produktNr, String produktNamn, String produktTyp, double pris
 	
 	public int getMangd(){
 		return mangd;
+	}
+	
+	public String toString(){
+		DecimalFormat df = new DecimalFormat("#.00");
+		return mangd + " * " + produktNamn + " " + df.format(mangd*pris);
 	}
 }

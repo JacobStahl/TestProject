@@ -84,4 +84,27 @@ public class kvittoTest {
 		
 		assertEquals(produkt.getPris(), kvitto.beraknaRabatt(produkt), 0.0);
 	}
+	
+	@Test
+	public void testPrint(){
+		setUpKvitto();
+		
+		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 5.0, 6, 0, 0.0);
+		kvitto.addProdukt(produkt2);
+		assertNotNull(kvitto.print());
+		System.out.println(kvitto.print());
+	}
+	
+	@Test
+	public void testPrintWithKund(){
+		Kund kund = new Kund(1, "Stefan", "Svensson", "070 253 12 35", "Stenvägen 4");
+		kvitto = new Kvitto(1, kund);
+		setUpProdukt();
+		kvitto.addProdukt(produkt);
+		
+		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 5.15, 6, 0, 0.0);
+		kvitto.addProdukt(produkt2);
+		assertNotNull(kvitto.print());
+		System.out.println(kvitto.print());
+	}
 }
