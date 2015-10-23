@@ -13,7 +13,7 @@ public class Rabatt {
 		case 1:
 			return rabattKronor(produkt);
 		default:
-			return 0f;
+			return 0.0;
 		}
 	}
 	
@@ -35,12 +35,12 @@ public class Rabatt {
 		case 0:
 			return tioProcentRabatt(totalPris);
 		default:
-			return 0f;
+			return 0.0;
 		}
 	}
 	
 	private double tioProcentRabatt(double totalPris){
-		return totalPris * 0.1f;
+		return totalPris * 0.1;
 	}
 	
 }

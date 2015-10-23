@@ -96,7 +96,7 @@ public class rabattTest {
 		q = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd, rabattTypProdukt, rabattKronor);
 		Rabatt rabatt = new Rabatt();
 		
-		for(int i = 0;i<13;i++){
+		for(int i = 0;i<100;i++){
 			double kalk = rabatt.beraknaProduktRabatt(q);
 			assertEquals((q.getMangd()/3)*5.5f, kalk, 0f);
 			q.setMangd(q.getMangd()+3);
