@@ -52,7 +52,7 @@ public class rabattTest {
 		produktNr = 1;
 		produktNamn = "Gurka";
 		produktTyp = "Grönsak";
-		pris = 5.5f;
+		pris = 5.5;
 		mangd = 6;
 		rabattTypProdukt = 0;
 		rabattKronor = 0;
@@ -62,7 +62,7 @@ public class rabattTest {
 		
 		double kalk = rabatt.beraknaProduktRabatt(p);
 		
-		assertEquals(11f, kalk, 0f);
+		assertEquals(11f, kalk, 0.0);
 	}
 	
 	@Test
@@ -70,17 +70,17 @@ public class rabattTest {
 		produktNr = 1;
 		produktNamn = "Gurka";
 		produktTyp = "Grönsak";
-		pris = 5.5f;
+		pris = 5.5;
 		mangd = 1;
 		rabattTypProdukt = 1;
-		rabattKronor = 3.2f;
+		rabattKronor = 3.2;
 		
 		p = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd, rabattTypProdukt, rabattKronor);
 		Rabatt rabatt = new Rabatt();
 		
 		double kalk = rabatt.beraknaProduktRabatt(p);
 		
-		assertEquals((3.2f*mangd), kalk, 0f);
+		assertEquals((3.2f*mangd), kalk, 0.0);
 	}
 	
 	@Test //Testar några ekvivalensklasspartitioner
@@ -96,7 +96,7 @@ public class rabattTest {
 		q = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd, rabattTypProdukt, rabattKronor);
 		Rabatt rabatt = new Rabatt();
 		
-		for(int i = 0;i<13;i++){
+		for(int i = 0;i<100;i++){
 			double kalk = rabatt.beraknaProduktRabatt(q);
 			assertEquals((q.getMangd()/3)*5.5f, kalk, 0f);
 			q.setMangd(q.getMangd()+3);

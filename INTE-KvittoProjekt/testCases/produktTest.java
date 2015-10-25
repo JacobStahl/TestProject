@@ -36,7 +36,7 @@ private Produkt p;
 		assertEquals(produktNr, p.getProduktNr());
 		assertEquals(produktNamn, p.getProduktNamn());
 		assertEquals(produktTyp, p.getProduktTyp());
-		assertEquals(pris, p.getPris(), 0f);
+		assertEquals(pris, p.getPris(), 0.0);
 	
 	}
 	
@@ -57,7 +57,7 @@ private Produkt p;
 		assertEquals(produktNr, p.getProduktNr());
 		assertEquals(produktNamn, p.getProduktNamn());
 		assertEquals(produktTyp, p.getProduktTyp());
-		assertEquals(pris, p.getPris(), 0f);
+		assertEquals(pris, p.getPris(), 0.0);
 		
 	}
 
