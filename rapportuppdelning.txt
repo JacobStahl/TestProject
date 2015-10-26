@@ -1,0 +1,4 @@
+Jake: Granskning, introduktion, tdd
+Abbe: Statiska mått, täckningsgrad, profiler
+Josef: Testfall
+Filip: Byggscript, Slutlig design
