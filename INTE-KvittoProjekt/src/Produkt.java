@@ -92,20 +92,12 @@ public Produkt(int produktNr, String produktNamn, String produktTyp, int pris, i
 		return pris;
 	}
 	
-	public int getRabattTyp(){
+	public Rabatt getRabattTyp(){
 		return rabattTyp;
 	}
 	
-	public void setRabattTyp(int rabattTyp){
+	public void setRabattTyp(Rabatt rabattTyp){
 		this.rabattTyp = rabattTyp;
-	}
-	
-	public double getRabattKronor(){
-		return rabattKronor;
-	}
-	
-	public void setRabattKronor(int rabattKronor){
-		this.rabattKronor = rabattKronor;
 	}
 	
 	public void setMangd(int mangd){

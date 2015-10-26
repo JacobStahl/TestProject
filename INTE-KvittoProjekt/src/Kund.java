@@ -6,7 +6,7 @@ public class Kund {
 	private String efterNamn;
 	private String telefonNummer;
 	private String adress;
-	private int rabattTyp;
+	private Rabatt rabattTyp;
 	
 	public Kund(int kundNr, String forNamn, String efterNamn, String telefonNummer, String adress){
 		this.kundNr = kundNr;
@@ -17,7 +17,7 @@ public class Kund {
 		
 	}
 	
-	public Kund(int kundNr, String forNamn, String efterNamn, String telefonNummer, String adress, int rabattTyp){
+	public Kund(int kundNr, String forNamn, String efterNamn, String telefonNummer, String adress, Rabatt rabattTyp){
 		this.kundNr = kundNr;
 		this.forNamn = forNamn;
 		this.efterNamn = efterNamn;
@@ -67,7 +67,7 @@ public class Kund {
 		this.adress = adress;
 	}
 
-	public int getRabattTyp() {
+	public Rabatt getRabattTyp() {
 		return rabattTyp;
 	}
 	

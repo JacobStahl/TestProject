@@ -44,7 +44,7 @@ public class Kvitto {
 		return datum;
 	}
 	
-	public Pengar getTotalPris(){
+	private Pengar getTotalPris(){
 		totalPris.setPengar(0000);
 		for(Produkt produkt : produkter){
 			totalPris.add(produkt.getPris().getPengar() * produkt.getMangd());
