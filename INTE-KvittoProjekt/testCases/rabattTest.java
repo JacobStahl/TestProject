@@ -1,6 +1,4 @@
 import static org.junit.Assert.*;
-
-import org.junit.Before;
 import org.junit.Test;
 
 
@@ -33,7 +31,7 @@ public class rabattTest {
 	private int produktNr;
 	private String produktNamn;
 	private String produktTyp;
-	private double pris;
+	private Pengar pris;
 	private int mangd;
 	private int rabattTypProdukt;
 	private double rabattKronor;
@@ -52,9 +50,9 @@ public class rabattTest {
 		produktNr = 1;
 		produktNamn = "Gurka";
 		produktTyp = "Grönsak";
-		pris = 5.5;
+		pris = new Pengar(550);
 		mangd = 6;
-		rabattTypProdukt = 0;
+		rabattTypProdukt = 1;
 		rabattKronor = 0;
 		
 		p = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd, rabattTypProdukt, rabattKronor);
@@ -62,7 +60,7 @@ public class rabattTest {
 		
 		double kalk = rabatt.beraknaProduktRabatt(p);
 		
-		assertEquals(11f, kalk, 0.0);
+		assertEquals(1100, kalk, 0.0);
 	}
 	
 	@Test
@@ -70,9 +68,9 @@ public class rabattTest {
 		produktNr = 1;
 		produktNamn = "Gurka";
 		produktTyp = "Grönsak";
-		pris = 5.5;
+		pris = new Pengar(550);
 		mangd = 1;
-		rabattTypProdukt = 1;
+		rabattTypProdukt = 2;
 		rabattKronor = 3.2;
 		
 		p = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd, rabattTypProdukt, rabattKronor);
@@ -80,7 +78,7 @@ public class rabattTest {
 		
 		double kalk = rabatt.beraknaProduktRabatt(p);
 		
-		assertEquals((3.2f*mangd), kalk, 0.0);
+		assertEquals((3.2*mangd), kalk, 0.0);
 	}
 	
 	@Test //Testar några ekvivalensklasspartitioner
@@ -88,9 +86,9 @@ public class rabattTest {
 		produktNr = 1;
 		produktNamn = "Gurka";
 		produktTyp = "Grönsak";
-		pris = 5.5f;
+		pris = new Pengar(550);
 		mangd = 0;
-		rabattTypProdukt = 0;
+		rabattTypProdukt = 1;
 		rabattKronor = 0;
 		
 		q = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd, rabattTypProdukt, rabattKronor);
@@ -98,7 +96,7 @@ public class rabattTest {
 		
 		for(int i = 0;i<100;i++){
 			double kalk = rabatt.beraknaProduktRabatt(q);
-			assertEquals((q.getMangd()/3)*5.5f, kalk, 0f);
+			assertEquals((q.getMangd()/3)*550, kalk, 0f);
 			q.setMangd(q.getMangd()+3);
 		}
 	}

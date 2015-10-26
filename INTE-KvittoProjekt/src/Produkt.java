@@ -1,4 +1,3 @@
-import java.text.DecimalFormat;
 
 
 public class Produkt {
@@ -6,13 +5,13 @@ public class Produkt {
 	private int produktNr;
 	private String produktNamn;
 	private String produktTyp;
-	private double pris;
+	private Pengar pris;
 	private int rabattTyp;
 	private double rabattKronor;
 	private int mangd;
 	
 	
-	public Produkt(int produktNr, String produktNamn, String produktTyp, double pris, int mangd){
+	public Produkt(int produktNr, String produktNamn, String produktTyp, Pengar pris, int mangd){
 		
 		this.produktNr = produktNr;
 		this.produktNamn = produktNamn;
@@ -22,7 +21,7 @@ public class Produkt {
 		
 	}
 	
-public Produkt(int produktNr, String produktNamn, String produktTyp, double pris, int mangd, int rabattTyp, double rabattKronor){
+public Produkt(int produktNr, String produktNamn, String produktTyp, Pengar pris, int mangd, int rabattTyp, double rabattKronor){
 		
 		this.produktNr = produktNr;
 		this.produktNamn = produktNamn;
@@ -33,6 +32,28 @@ public Produkt(int produktNr, String produktNamn, String produktTyp, double pris
 		this.rabattKronor = rabattKronor;
 		
 	}
+
+public Produkt(int produktNr, String produktNamn, String produktTyp, int pris, int mangd){
+	
+	this.produktNr = produktNr;
+	this.produktNamn = produktNamn;
+	this.produktTyp = produktTyp;
+	this.pris = new Pengar(pris);
+	this.mangd = mangd;
+	
+}
+
+public Produkt(int produktNr, String produktNamn, String produktTyp, int pris, int mangd, int rabattTyp, double rabattKronor){
+	
+	this.produktNr = produktNr;
+	this.produktNamn = produktNamn;
+	this.produktTyp = produktTyp;
+	this.pris = new Pengar(pris);
+	this.mangd = mangd;
+	this.rabattTyp = rabattTyp;
+	this.rabattKronor = rabattKronor;
+	
+}
 	
 	public void setProduktNr(int produktNr)
 	{
@@ -64,12 +85,12 @@ public Produkt(int produktNr, String produktNamn, String produktTyp, double pris
 		return produktTyp;
 	}
 	
-	public void setPris(double pris)
+	public void setPris(Pengar pris)
 	{
 		this.pris = pris;
 	}
 	
-	public double getPris()
+	public Pengar getPris()
 	{
 		return pris;
 	}
@@ -99,7 +120,6 @@ public Produkt(int produktNr, String produktNamn, String produktTyp, double pris
 	}
 	
 	public String toString(){
-		DecimalFormat df = new DecimalFormat("#.00");
-		return mangd + " * " + produktNamn + " " + df.format(mangd*pris);
+		return mangd + " * " + produktNamn + " " + pris.print();
 	}
 }

@@ -3,31 +3,31 @@ public class Rabatt {
 
 	private int rabattTyp;
 	
-	public double beraknaProduktRabatt(Produkt produkt){
+	public int beraknaProduktRabatt(Produkt produkt){
 		
 		this.rabattTyp = produkt.getRabattTyp();
 		
 		switch (rabattTyp) {
-		case 0:
-			return treForTva(produkt);
 		case 1:
+			return treForTva(produkt);
+		case 2:
 			return rabattKronor(produkt);
 		default:
-			return 0.0;
+			return 0;
 		}
 	}
 	
-	private double treForTva(Produkt produkt){
+	private int treForTva(Produkt produkt){
 		int kalk;
 		kalk = produkt.getMangd() / 3;
-		return kalk * produkt.getPris();
+		return kalk * produkt.getPris().getPengar();
 	}
 	
-	private double rabattKronor(Produkt produkt){
+	private int rabattKronor(Produkt produkt){
 		return produkt.getRabattKronor() * produkt.getMangd();
 	}
 	
-	public double beraknaKundRabatt(Kund kund, double totalPris){
+	public int beraknaKundRabatt(Kund kund, Pengar totalPris){
 		
 		this.rabattTyp = kund.getRabattTyp();
 		
@@ -35,12 +35,14 @@ public class Rabatt {
 		case 0:
 			return tioProcentRabatt(totalPris);
 		default:
-			return 0.0;
+			return 0;
 		}
 	}
 	
-	private double tioProcentRabatt(double totalPris){
-		return totalPris * 0.1;
+	private int tioProcentRabatt(Pengar totalPris){
+		Pengar rabatt = new Pengar(totalPris.getPengar());
+		rabatt.multiply(0.1);
+		return rabatt.getPengar();
 	}
 	
 }

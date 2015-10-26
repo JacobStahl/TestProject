@@ -1,6 +1,4 @@
 import static org.junit.Assert.*;
-
-import org.junit.Before;
 import org.junit.Test;
 
 public class produktTest {
@@ -10,7 +8,7 @@ private Produkt p;
 	private int produktNr;
 	private String produktNamn;
 	private String produktTyp;
-	private double pris;
+	private Pengar pris;
 	private int mangd;
 	
 	
@@ -18,7 +16,7 @@ private Produkt p;
 		produktNr = 123;
 		produktNamn = "Mjölk";
 		produktTyp = "Mejeri";
-		pris = 12;
+		pris = new Pengar(1200);
 		mangd = 1;
 		
 		p = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd);
@@ -36,7 +34,7 @@ private Produkt p;
 		assertEquals(produktNr, p.getProduktNr());
 		assertEquals(produktNamn, p.getProduktNamn());
 		assertEquals(produktTyp, p.getProduktTyp());
-		assertEquals(pris, p.getPris(), 0.0);
+		assertEquals(pris.getPengar(), p.getPris().getPengar());
 	
 	}
 	
@@ -46,7 +44,7 @@ private Produkt p;
 		produktNr = 1441;
 		produktNamn = "Skinka";
 		produktTyp = "Chark";
-		pris = 54;
+		pris = new Pengar(5400);
 		
 		p.setProduktNr(produktNr);
 		p.setProduktNamn(produktNamn);
@@ -57,7 +55,7 @@ private Produkt p;
 		assertEquals(produktNr, p.getProduktNr());
 		assertEquals(produktNamn, p.getProduktNamn());
 		assertEquals(produktTyp, p.getProduktTyp());
-		assertEquals(pris, p.getPris(), 0.0);
+		assertEquals(pris.getPengar(), p.getPris().getPengar());
 		
 	}
 

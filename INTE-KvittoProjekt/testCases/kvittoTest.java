@@ -17,14 +17,14 @@ public class kvittoTest {
 	private int produktNr;
 	private String produktNamn;
 	private String produktTyp;
-	private double pris;
+	private Pengar pris;
 	private int mangd;
 	
 	public void setUpProdukt(){
 		produktNr = 123;
 		produktNamn = "Mjölk";
 		produktTyp = "Mejeri";
-		pris = 12;
+		pris = new Pengar(1200);
 		mangd = 1;
 		
 		produkt = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd);
@@ -69,27 +69,27 @@ public class kvittoTest {
 	@Test
 	public void checkTotalPris(){
 		setUpKvitto();
-		double pris2 = 15;
+		int pris2 = 1500;
 		Produkt produkt2 = new Produkt(125, "Gurka", "Grönsak", pris2, 1);
 		kvitto.addProdukt(produkt2);
 		
-		assertEquals(pris + pris2, kvitto.getTotalPris(), 0.0);
+		assertEquals(pris.getPengar() + pris2, kvitto.getTotalPris().getPengar());
 	}
 	
 	@Test
 	public void testRabatt(){
 		setUpKvitto();
-		produkt.setRabattTyp(0);
+		produkt.setRabattTyp(1);
 		produkt.setMangd(3);
 		
-		assertEquals(produkt.getPris(), kvitto.beraknaRabatt(produkt), 0.0);
+		assertEquals(produkt.getPris().getPengar(), kvitto.beraknaRabatt(produkt));
 	}
 	
 	@Test
 	public void testPrint(){
 		setUpKvitto();
 		
-		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 5.0, 6, 0, 0.0);
+		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 5, 6, 1, 0.0);
 		kvitto.addProdukt(produkt2);
 		assertNotNull(kvitto.print());
 		System.out.println(kvitto.print());
@@ -102,7 +102,7 @@ public class kvittoTest {
 		setUpProdukt();
 		kvitto.addProdukt(produkt);
 		
-		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 5.15, 6, 0, 0.0);
+		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 515, 6, 1, 0.0);
 		kvitto.addProdukt(produkt2);
 		assertNotNull(kvitto.print());
 		System.out.println(kvitto.print());

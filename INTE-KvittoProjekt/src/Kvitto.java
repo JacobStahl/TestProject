@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Kvitto {
 	
-	private double totalPris;
+	private Pengar totalPris = new Pengar(0000);
 	private Date datum = new Date();
 	private int kvittoNummer;
 	private ArrayList<Produkt> produkter;
@@ -22,7 +22,7 @@ public class Kvitto {
 		this.kund = kund;
 	}
 	
-	public double beraknaRabatt(Produkt produkt){
+	public int beraknaRabatt(Produkt produkt){
 		Rabatt rabatt = new Rabatt();
 		return rabatt.beraknaProduktRabatt(produkt);
 	}
@@ -44,18 +44,17 @@ public class Kvitto {
 		return datum;
 	}
 	
-	public double getTotalPris(){
-		totalPris = 0;
+	public Pengar getTotalPris(){
+		totalPris.setPengar(0000);
 		for(Produkt produkt : produkter){
-			totalPris += produkt.getPris() * produkt.getMangd();
+			totalPris.add(produkt.getPris().getPengar() * produkt.getMangd());
 		}
 		return totalPris;
 	}
 	
 	public String print(){
 		String utskrift = "";
-		double totalRabatt = 0;
-		DecimalFormat df = new DecimalFormat("#.00");
+		Pengar totalRabatt = new Pengar(0);
 		
 		utskrift += "Foo Bar" + "\n";
 		utskrift += "\n";
@@ -63,9 +62,9 @@ public class Kvitto {
 		utskrift += "\n";
 		
 		for(Produkt produkt : produkter){
-			double rabatt = 0;
+			int rabatt = 0;
 			rabatt = beraknaRabatt(produkt);
-			totalRabatt += rabatt;
+			totalRabatt.add(rabatt);
 			if(rabatt != 0){
 				utskrift += produkt + "\n";
 				utskrift += "	Rabatt: -" + df.format(rabatt) + "\n";
