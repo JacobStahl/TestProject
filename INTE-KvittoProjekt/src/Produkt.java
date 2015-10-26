@@ -6,8 +6,7 @@ public class Produkt {
 	private String produktNamn;
 	private String produktTyp;
 	private Pengar pris;
-	private int rabattTyp;
-	private double rabattKronor;
+	private Rabatt rabattTyp;
 	private int mangd;
 	
 	
@@ -21,7 +20,7 @@ public class Produkt {
 		
 	}
 	
-public Produkt(int produktNr, String produktNamn, String produktTyp, Pengar pris, int mangd, int rabattTyp, double rabattKronor){
+public Produkt(int produktNr, String produktNamn, String produktTyp, Pengar pris, int mangd, Rabatt rabattTyp){
 		
 		this.produktNr = produktNr;
 		this.produktNamn = produktNamn;
@@ -29,7 +28,6 @@ public Produkt(int produktNr, String produktNamn, String produktTyp, Pengar pris
 		this.pris = pris;
 		this.mangd = mangd;
 		this.rabattTyp = rabattTyp;
-		this.rabattKronor = rabattKronor;
 		
 	}
 
@@ -43,7 +41,7 @@ public Produkt(int produktNr, String produktNamn, String produktTyp, int pris, i
 	
 }
 
-public Produkt(int produktNr, String produktNamn, String produktTyp, int pris, int mangd, int rabattTyp, double rabattKronor){
+public Produkt(int produktNr, String produktNamn, String produktTyp, int pris, int mangd, Rabatt rabattTyp){
 	
 	this.produktNr = produktNr;
 	this.produktNamn = produktNamn;
@@ -51,7 +49,6 @@ public Produkt(int produktNr, String produktNamn, String produktTyp, int pris, i
 	this.pris = new Pengar(pris);
 	this.mangd = mangd;
 	this.rabattTyp = rabattTyp;
-	this.rabattKronor = rabattKronor;
 	
 }
 	

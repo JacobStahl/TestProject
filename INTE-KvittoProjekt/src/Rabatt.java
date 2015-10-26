@@ -1,6 +1,16 @@
 
 public class Rabatt {
-
+	
+	public int berakna(Produkt produkt){
+		return 0;
+	}
+	
+	public int berakna(Pengar totalPris){
+		return 0;
+	}
+	
+	
+	/*
 	private int rabattTyp;
 	
 	public int beraknaProduktRabatt(Produkt produkt){
@@ -44,5 +54,5 @@ public class Rabatt {
 		rabatt.multiply(0.1);
 		return rabatt.getPengar();
 	}
-	
+	*/
 }
