@@ -32,7 +32,11 @@ public class Kvitto {
 	}
 	
 	private Pengar beraknaRabatt(Produkt produkt){
-		return produkt.getRabattTyp().berakna(produkt);
+		if (produkt.getRabattTyp() != null){
+			return produkt.getRabattTyp().berakna(produkt);
+		}else{
+			return new Pengar(0);
+		}
 	}
 	
 	private Pengar beraknaTotalRabatt(){

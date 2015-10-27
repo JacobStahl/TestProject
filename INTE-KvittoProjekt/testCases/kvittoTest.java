@@ -109,4 +109,17 @@ public class kvittoTest {
 		assertNotNull(kvitto.print());
 		System.out.println(kvitto.print());
 	}
+	
+	@Test
+	public void testGetTotalRabatt(){
+		setUpKvitto();
+		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 515, 6, new RabattTreForTva());
+		kvitto.addProdukt(produkt2);
+		
+		Produkt produkt3 = new Produkt(2, "Tomat", "Grönsak", 300, 3);
+		kvitto.addProdukt(produkt3);
+		
+		assertEquals(1030, kvitto.getTotalRabatt().getPengar());
+	}
+	
 }

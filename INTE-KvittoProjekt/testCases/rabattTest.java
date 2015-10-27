@@ -93,4 +93,10 @@ public class rabattTest {
 		}
 	}
 	
+	@Test
+	public void testRabatt(){
+		Rabatt rabatt = new Rabatt();
+		assertEquals(rabatt.berakna(p).getPengar(), 0);
+		assertEquals(rabatt.berakna(new Pengar(0)).getPengar(), 0);
+	}
 }
