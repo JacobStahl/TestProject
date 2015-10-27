@@ -6,9 +6,9 @@ public class RabattProcent extends Rabatt{
 		this.rabatt = rabatt;
 	}
 	
-	public int berakna(Pengar totalPris){
+	public Pengar berakna(Pengar totalPris){
 		Pengar p = new Pengar(totalPris.getPengar());
 		p.multiply(rabatt);
-		return p.getPengar();
+		return p;
 	}
 }

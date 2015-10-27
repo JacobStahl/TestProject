@@ -1,12 +1,12 @@
 
 public class Rabatt {
-	
-	public int berakna(Produkt produkt){
-		return 0;
+		
+	public Pengar berakna(Produkt produkt){
+		return new Pengar(0);
 	}
 	
-	public int berakna(Pengar totalPris){
-		return 0;
+	public Pengar berakna(Pengar totalPris){
+		return new Pengar(0);
 	}
 	
 	

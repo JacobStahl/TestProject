@@ -7,8 +7,10 @@ public class RabattKronor extends Rabatt {
 		this.rabatt = rabatt;
 	}
 	
-	public int berakna(Produkt produkt){
-		return rabatt * produkt.getMangd();
+	public Pengar berakna(Produkt produkt){
+		Pengar p = new Pengar(rabatt);
+		p.multiply(produkt.getMangd());
+		return p;
 	}
 	
 }

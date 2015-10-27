@@ -19,6 +19,7 @@ public class kvittoTest {
 	private String produktTyp;
 	private Pengar pris;
 	private int mangd;
+	private Rabatt rabattTyp;
 	
 	public void setUpProdukt(){
 		produktNr = 123;
@@ -26,8 +27,9 @@ public class kvittoTest {
 		produktTyp = "Mejeri";
 		pris = new Pengar(1200);
 		mangd = 1;
+		rabattTyp = new RabattTreForTva();
 		
-		produkt = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd);
+		produkt = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd, rabattTyp);
 	}
 	
 	public void setUpKvitto(){
@@ -79,17 +81,17 @@ public class kvittoTest {
 	@Test
 	public void testRabatt(){
 		setUpKvitto();
-		produkt.setRabattTyp(1);
+		produkt.setRabattTyp(new RabattTreForTva());
 		produkt.setMangd(3);
 		
-		assertEquals(produkt.getPris().getPengar(), kvitto.beraknaRabatt(produkt));
+		assertEquals(produkt.getPris().getPengar(), produkt.getRabattTyp().berakna(produkt).getPengar());
 	}
 	
 	@Test
 	public void testPrint(){
 		setUpKvitto();
 		
-		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 5, 6, 1, 0.0);
+		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 5, 6, new RabattTreForTva());
 		kvitto.addProdukt(produkt2);
 		assertNotNull(kvitto.print());
 		System.out.println(kvitto.print());
@@ -102,7 +104,7 @@ public class kvittoTest {
 		setUpProdukt();
 		kvitto.addProdukt(produkt);
 		
-		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 515, 6, 1, 0.0);
+		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 515, 6, new RabattTreForTva());
 		kvitto.addProdukt(produkt2);
 		assertNotNull(kvitto.print());
 		System.out.println(kvitto.print());

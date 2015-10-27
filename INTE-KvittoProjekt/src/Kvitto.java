@@ -1,11 +1,12 @@
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 
 public class Kvitto {
 	
-	private Pengar totalPris = new Pengar(0000);
+	private Pengar totalPris = new Pengar(0);
+	private Pengar totalRabatt = new Pengar(0);
+	private Pengar pris = new Pengar(0);
 	private Date datum = new Date();
 	private int kvittoNummer;
 	private ArrayList<Produkt> produkter;
@@ -22,9 +23,33 @@ public class Kvitto {
 		this.kund = kund;
 	}
 	
-	public int beraknaRabatt(Produkt produkt){
-		Rabatt rabatt = new Rabatt();
-		return rabatt.beraknaProduktRabatt(produkt);
+	private Pengar beraknaTotalPris(){
+		totalPris.setPengar(0);
+		for(Produkt produkt : produkter){
+			totalPris.add(produkt.getPris().getPengar() * produkt.getMangd());
+		}
+		return totalPris;
+	}
+	
+	private Pengar beraknaRabatt(Produkt produkt){
+		return produkt.getRabattTyp().berakna(produkt);
+	}
+	
+	private Pengar beraknaTotalRabatt(){
+		totalRabatt.set(0);
+		for(Produkt produkt : produkter){
+			totalRabatt.add(beraknaRabatt(produkt).getPengar());
+		}
+		return totalRabatt;
+	}
+	
+	private Pengar beraknaPris(){
+		beraknaTotalPris();
+		beraknaTotalRabatt();
+		pris.set(0);
+		pris.add(totalPris.getPengar());
+		pris.add(totalRabatt.getPengar());
+		return pris;
 	}
 	
 	public void addProdukt(Produkt produkt){
@@ -44,17 +69,22 @@ public class Kvitto {
 		return datum;
 	}
 	
-	private Pengar getTotalPris(){
-		totalPris.setPengar(0000);
-		for(Produkt produkt : produkter){
-			totalPris.add(produkt.getPris().getPengar() * produkt.getMangd());
-		}
-		return totalPris;
+	public Pengar getPris(){
+		return beraknaPris();
+	}
+	
+	public Pengar getTotalPris(){
+		return beraknaTotalPris();
+	}
+	
+	public Pengar getTotalRabatt(){
+		return beraknaTotalRabatt();
 	}
 	
 	public String print(){
 		String utskrift = "";
-		Pengar totalRabatt = new Pengar(0);
+		beraknaTotalPris();
+		beraknaTotalRabatt();
 		
 		utskrift += "Foo Bar" + "\n";
 		utskrift += "\n";
@@ -62,12 +92,11 @@ public class Kvitto {
 		utskrift += "\n";
 		
 		for(Produkt produkt : produkter){
-			int rabatt = 0;
+			Pengar rabatt = new Pengar(0);
 			rabatt = beraknaRabatt(produkt);
-			totalRabatt.add(rabatt);
-			if(rabatt != 0){
+			if(rabatt.getPengar() != 0){
 				utskrift += produkt + "\n";
-				utskrift += "	Rabatt: -" + df.format(rabatt) + "\n";
+				utskrift += "	Rabatt: -" + rabatt.print() + "\n";
 				
 			}else{
 				utskrift += produkt + "\n";
@@ -75,10 +104,11 @@ public class Kvitto {
 		}
 		
 		utskrift += "\n";
-		utskrift += "Totalt kr: " + df.format((getTotalPris()-totalRabatt)) + "\n";
-		if(totalRabatt != 0){
-			utskrift += "Rabatt: " + df.format(totalRabatt) + "\n";
-			utskrift += "Totalt före rabatt: " + df.format(getTotalPris()) + "\n";
+		utskrift += "Totalkt kr: " + totalPris.print() + "\n";
+		if(totalRabatt.getPengar() != 0){
+			utskrift += "Totalt kr: " + getPris().print() + "\n";
+			utskrift += "Rabatt: " + totalRabatt.print() + "\n";
+			utskrift += "Totalt före rabatt: " + totalPris.print() + "\n";
 		}
 		utskrift += "\n";
 		
@@ -89,5 +119,4 @@ public class Kvitto {
 		
 		return utskrift;
 	}
-	
 }

@@ -1,10 +1,10 @@
 
 public class RabattTreForTva extends Rabatt{
 
-	public int berakna(Produkt produkt) {
-		int kalk;
-		kalk = produkt.getMangd() / 3;
-		return kalk * produkt.getPris().getPengar();
+	public Pengar berakna(Produkt produkt) {
+		Pengar rabatt = new Pengar(produkt.getPris().getPengar());
+		rabatt.multiply((produkt.getMangd()/3));
+		return rabatt;
 	}
 	
 }

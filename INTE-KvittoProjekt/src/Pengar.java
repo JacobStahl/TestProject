@@ -22,6 +22,11 @@ public class Pengar {
 		konvertera();
 	}
 	
+	public void set(int varde){
+		this.varde = varde;
+		konvertera();
+	}
+	
 	public void multiply(double d){
 		varde = (int) Math.round(varde * d);
 		konvertera();
