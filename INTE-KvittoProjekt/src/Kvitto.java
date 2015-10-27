@@ -45,6 +45,7 @@ public class Kvitto {
 		}
 		if (kund != null) {
 			if (kund.getRabattTyp()!=null) {
+				beraknaTotalPris();
 				Pengar nyRabatt = new Pengar(0);
 				nyRabatt.add(totalPris.getPengar()-totalRabatt.getPengar());
 				totalRabatt.add(kund.getRabattTyp().berakna(nyRabatt).getPengar());

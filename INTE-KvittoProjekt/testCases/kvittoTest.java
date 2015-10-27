@@ -134,6 +134,47 @@ public class kvittoTest {
 		assertNotNull(kvitto.print());
 		System.out.println(kvitto.print());
 		assertEquals(2500, kvitto.getTotalRabatt().getPengar());
+		assertEquals(7000, kvitto.getTotalPris().getPengar());
 		
+	}
+	
+	@Test
+	public void testIngenRabatt(){
+		Kund kund = new Kund(1, "Stefan", "Svensson", "070 253 12 35", "Stenvägen 4");
+		kvitto = new Kvitto(3, kund);
+		Produkt produkt3 = new Produkt(1, "Juice", "Dryck", 1000, 1);
+		kvitto.addProdukt(produkt3);
+		
+		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 1000, 6);
+		kvitto.addProdukt(produkt2);
+		assertEquals(7000, kvitto.getTotalPris().getPengar());
+		assertEquals(0, kvitto.getTotalRabatt().getPengar());
+		
+	}
+	
+	@Test
+	public void testProduktRabatt(){
+		Kund kund = new Kund(1, "Stefan", "Svensson", "070 253 12 35", "Stenvägen 4");
+		kvitto = new Kvitto(3, kund);
+		Produkt produkt3 = new Produkt(1, "Juice", "Dryck", 1000, 1);
+		kvitto.addProdukt(produkt3);
+		
+		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 1000, 6, new RabattTreForTva());
+		kvitto.addProdukt(produkt2);
+		assertEquals(2000, kvitto.getTotalRabatt().getPengar());
+		assertEquals(7000, kvitto.getTotalPris().getPengar());
+	}
+	
+	@Test
+	public void testKundRabatt(){
+		Kund kund = new Kund(1, "Stefan", "Svensson", "070 253 12 35", "Stenvägen 4", new RabattProcent(0.1));
+		kvitto = new Kvitto(4, kund);
+		Produkt produkt3 = new Produkt(1, "Juice", "Dryck", 1000, 1);
+		kvitto.addProdukt(produkt3);
+		
+		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 1000, 6);
+		kvitto.addProdukt(produkt2);
+		assertEquals(700, kvitto.getTotalRabatt().getPengar());
+		assertEquals(7000, kvitto.getTotalPris().getPengar());
 	}
 }
