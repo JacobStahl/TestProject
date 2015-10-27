@@ -4,6 +4,19 @@
 
 <target name="runjunit" depends="compile">
 
+	<junit printsummary="on">
+	
+		<test name="kvittoTest" />
+		<classpath>
+		
+		<pathelement location="C:\Users\Filip\Desktop\TestProject\INTE-KvittoProjekt\junit-4.12.jar" />
+		<pathelement location="Byggscript" />
+		
+		</classpath>
+
+	
+	</junit>
+
 </target>
 
 
