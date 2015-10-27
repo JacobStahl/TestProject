@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project default="runjunit" name="Kvittoprojekt - kompilera och kör" >
+
+<target name="runjunit" depends="compile">
+
+</target>
+
+
+<target name="compile">
+	<javac includeantruntime="false" srcdir="./src" destdir="Byggscript" 
+	classpath="C:\Users\Filip\Desktop\TestProject\INTE-KvittoProjekt\junit-4.12.jar" /> 
+</target>
+
+
+
+
+
+</project>
+
+
+
+
