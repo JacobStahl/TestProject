@@ -100,7 +100,7 @@ public class kvittoTest {
 	@Test
 	public void testPrintWithKund(){
 		Kund kund = new Kund(1, "Stefan", "Svensson", "070 253 12 35", "Stenvägen 4");
-		kvitto = new Kvitto(1, kund);
+		kvitto = new Kvitto(2, kund);
 		setUpProdukt();
 		kvitto.addProdukt(produkt);
 		
@@ -122,4 +122,18 @@ public class kvittoTest {
 		assertEquals(1030, kvitto.getTotalRabatt().getPengar());
 	}
 	
+	@Test
+	public void testTvaRabatter(){
+		Kund kund = new Kund(1, "Stefan", "Svensson", "070 253 12 35", "Stenvägen 4", new RabattProcent(0.1));
+		kvitto = new Kvitto(3, kund);
+		Produkt produkt3 = new Produkt(1, "Juice", "Dryck", 1000, 1);
+		kvitto.addProdukt(produkt3);
+		
+		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 1000, 6, new RabattTreForTva());
+		kvitto.addProdukt(produkt2);
+		assertNotNull(kvitto.print());
+		System.out.println(kvitto.print());
+		assertEquals(2500, kvitto.getTotalRabatt().getPengar());
+		
+	}
 }

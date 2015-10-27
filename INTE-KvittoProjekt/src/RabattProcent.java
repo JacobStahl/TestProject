@@ -11,4 +11,5 @@ public class RabattProcent extends Rabatt{
 		p.multiply(rabatt);
 		return p;
 	}
+
 }
