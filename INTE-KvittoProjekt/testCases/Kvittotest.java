@@ -7,7 +7,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
-
+// Testar alla kvittometoder
 public class Kvittotest {
 	
 	private Kvitto kvitto;
@@ -21,6 +21,7 @@ public class Kvittotest {
 	private int mangd;
 	private Rabatt rabattTyp;
 	
+	// Sätter upp en produkt
 	public void setUpProdukt(){
 		produktNr = 123;
 		produktNamn = "Mjölk";
@@ -31,19 +32,21 @@ public class Kvittotest {
 		
 		produkt = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd, rabattTyp);
 	}
-	
+	// sätter upp ett kvitto
 	public void setUpKvitto(){
 		kvitto = new Kvitto(1);
 		setUpProdukt();
 		kvitto.addProdukt(produkt);
 	}
 	
+	// Testar att lägga till en produkt
 	@Test
 	public void checkAddProdukt() {
 		setUpKvitto();
 		assertEquals(1, kvitto.getProdukter().size());
 	}
 	
+	// Testar att ta bort en produkt
 	@Test
 	public void checkRemoveProdukt(){
 		setUpKvitto();
@@ -52,6 +55,7 @@ public class Kvittotest {
 		
 	}
 	
+	// Kontrollerar datumet
 	@Test
 	public void checkDate(){
 		setUpKvitto();
@@ -59,6 +63,7 @@ public class Kvittotest {
 		assertEquals(format.format(new Date()), format.format(kvitto.getDate()));
 	}
 	
+	// kontrollerar produkten
 	@Test
 	public void checkProdukt(){
 		setUpKvitto();
@@ -68,6 +73,7 @@ public class Kvittotest {
 		assertFalse(list.contains(produkt2));
 	}
 	
+	// kontrollerar totalpris
 	@Test
 	public void checkTotalPris(){
 		setUpKvitto();
@@ -78,6 +84,7 @@ public class Kvittotest {
 		assertEquals(pris.getPengar() + pris2, kvitto.getTotalPris().getPengar());
 	}
 	
+	// testar rabatten 3för2
 	@Test
 	public void testRabatt(){
 		setUpKvitto();
@@ -87,6 +94,7 @@ public class Kvittotest {
 		assertEquals(produkt.getPris().getPengar(), produkt.getRabattTyp().berakna(produkt).getPengar());
 	}
 	
+	// testar printmetoden
 	@Test
 	public void testPrint(){
 		setUpKvitto();
@@ -97,6 +105,7 @@ public class Kvittotest {
 		System.out.println(kvitto.print());
 	}
 	
+	// Testar printa kvitto med kund
 	@Test
 	public void testPrintWithKund(){
 		Kund kund = new Kund(1, "Stefan", "Svensson", "070 253 12 35", "Stenvägen 4");
@@ -110,6 +119,7 @@ public class Kvittotest {
 		System.out.println(kvitto.print());
 	}
 	
+	// kollar totala rabatten
 	@Test
 	public void testGetTotalRabatt(){
 		setUpKvitto();
@@ -122,6 +132,7 @@ public class Kvittotest {
 		assertEquals(1030, kvitto.getTotalRabatt().getPengar());
 	}
 	
+	// Testar att ha två rabatter
 	@Test
 	public void testTvaRabatter(){
 		Kund kund = new Kund(1, "Stefan", "Svensson", "070 253 12 35", "Stenvägen 4", new RabattProcent(0.1));
@@ -138,6 +149,7 @@ public class Kvittotest {
 		
 	}
 	
+	// test utan rabatt
 	@Test
 	public void testIngenRabatt(){
 		Kund kund = new Kund(1, "Stefan", "Svensson", "070 253 12 35", "Stenvägen 4");
@@ -154,6 +166,7 @@ public class Kvittotest {
 		
 	}
 	
+	// test med rabatt på specifik produkt
 	@Test
 	public void testProduktRabatt(){
 		Kund kund = new Kund(1, "Stefan", "Svensson", "070 253 12 35", "Stenvägen 4");
@@ -167,6 +180,7 @@ public class Kvittotest {
 		assertEquals(7000, kvitto.getTotalPris().getPengar());
 	}
 	
+	// test som hanterar kundrabatt
 	@Test
 	public void testKundRabatt(){
 		Kund kund = new Kund(1, "Stefan", "Svensson", "070 253 12 35", "Stenvägen 4", new RabattProcent(0.1));

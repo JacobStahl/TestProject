@@ -2,11 +2,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-
+// Tester för pengar
 public class Pengatest {
 
 
-	
+	// Test att hämta pengar
 	@Test
 	public void addTest() {
 		Pengar p = new Pengar(2500);
@@ -15,13 +15,14 @@ public class Pengatest {
 		assertEquals(7553, p.getPengar());
 	}
 	
+	// testar att multiplicera
 	@Test
 	public void multiplyTest(){
 		Pengar p = new Pengar(2500);
 		p.multiply(31.235432);
 		assertEquals(78089, p.getPengar());
 	}
-
+// Testar att skriva ut belopp
 	@Test
 	public void printTest(){
 		Pengar p = new Pengar(1234);

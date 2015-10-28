@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-
+// Test som vi kör för att testa profilern
 public class Profilertest {
 	
 	@Test

@@ -1,7 +1,7 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-
+// Tester för rabatt
 public class Rabattest {
 
 	
@@ -16,7 +16,7 @@ public class Rabattest {
 	private String adress;
 	private Rabatt rabattTypKund;
 	
-	
+	// Instansierar en kund
 	public void setUpKund(){
 		kundNr = 123;
 		forNamn = "Johan";
@@ -36,6 +36,7 @@ public class Rabattest {
 	private Rabatt rabattTypProdukt;
 	
 	
+	// Instansierar en kund med rabatt
 	@Test
 	public void testKundRabatt(){
 		setUpKund();
@@ -43,6 +44,7 @@ public class Rabattest {
 		assertEquals(1000, k.getRabattTyp().berakna(new Pengar(10000)).getPengar());
 	}
 	
+	// testar tre för två rabatt
 	@Test
 	public void testTreForTva(){
 		produktNr = 1;
@@ -59,6 +61,7 @@ public class Rabattest {
 		assertEquals(1100, kalk.getPengar());
 	}
 	
+	// Testar rabatt med kronor
 	@Test
 	public void testRabattKronor(){
 		produktNr = 1;

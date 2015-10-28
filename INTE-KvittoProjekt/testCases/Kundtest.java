@@ -2,6 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
+// Tester som hanterar kunder
 public class Kundtest {
 	
 	private Kund k;
@@ -12,7 +13,7 @@ public class Kundtest {
 	String telefonNummer;
 	String adress;
 	
-	
+	// instansierar en ny kund
 	public void setUp(){
 		kundNr = 123;
 		forNamn = "Johan";
@@ -23,12 +24,13 @@ public class Kundtest {
 		k = new Kund(kundNr, forNamn, efterNamn, telefonNummer, adress);
 	}
 	
+	// Kollar så kunden inte är null
 	@Test
 	public void checkIfNull() {
 		setUp();
 		assertNotNull(k);
 	}
-	
+	// Kollar alla getmetoder
 	@Test
 	public void checkGetMethods(){
 		setUp();
@@ -38,7 +40,7 @@ public class Kundtest {
 		assertEquals(telefonNummer, k.getTelefonNummer());
 		assertEquals(adress, k.getAdress());
 	}
-	
+	// Kollar alla setmetoder
 	@Test
 	public void checkSetMethods(){
 		setUp();

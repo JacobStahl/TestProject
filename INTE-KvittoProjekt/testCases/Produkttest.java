@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+// Testklass för produkter
 public class Produkttest {
 	
 private Produkt p;
@@ -11,7 +12,7 @@ private Produkt p;
 	private Pengar pris;
 	private int mangd;
 	
-	
+	// instansierar en produkt
 	public void setUp(){
 		produktNr = 123;
 		produktNamn = "Mjölk";
@@ -22,12 +23,13 @@ private Produkt p;
 		p = new Produkt(produktNr, produktNamn, produktTyp, pris, mangd);
 	}
 
+	// kollar så att produkten inte är null
 	@Test
 	public void checkIfProduktIsNull() {
 		setUp();
 		assertNotNull(p);
 	}
-	
+	// Testar alla getmetoder
 	@Test
 	public void checkGetMethods(){
 		setUp();
@@ -38,6 +40,7 @@ private Produkt p;
 	
 	}
 	
+	// testar alla setmetoder
 	@Test
 	public void checkSetMethods(){
 		setUp();
