@@ -1,0 +1,30 @@
+Lack of cohesion of methods:
+Representerar mängden par metoder som inte är kopplade på något sätt
+i en klass. Hög LCOM tyder på att man bör refaktorera då man har
+många metoder i klasser som inte är relaterade. Våra klasser visar
+relativt låg, genomsnitt cirka 0,4. Detta medelvärde höjs något eftersom
+att testklasser räknas med och de har lägre sammankoppling. 
+Eftersom vi har lågt LCOM värde tyder det på att metrics inte kan 
+se något tydligt fall där vi antagligen behöver refaktorera.
+
+Nested Block Depth:
+Visar metoder och konstruktorer och räknar hur många kapslade block 
+dessa har. Om en metod har väldigt många kapslade block kan den bli
+väldigt svår att förstå.
+Vårat genomsnitt är på 1,077 och maxvärdet är 3. Det är alltså
+antagligen inget problem med för många kapslade metoder då det inte
+borde utgöra något problem med att förstå koden.
+
+McCabe Cyclomatic Complexity:
+Visar på komplexiteten av programmet genom att mäta mängden oberoende
+vägar genom koden. Rekommendationen är att generellt sett hålla sig
+under ett värde på 10 i alla moduler och försöka dela upp dessa om
+värdet blir för högt.
+Vårat medelvärde 1,132 och maxvärdet är 7. Medelvärdet tyder på att
+programmet är ganska simpelt och inte har så många olika vägar genom
+koden. Maxvärdet är relativt högt men det kommer enbart från en metod:
+print. Denna har fler "if"-satser för utskrift vilket gör att värdet 
+höjer sig något. Värdet är dock fortfarande under 10. 
+Metrics visar alltså inga metoder som antagligen behöver brytas upp 
+på grund av för hög komplexitet, vilket inte är förvånande i ett så
+litet program.
