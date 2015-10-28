@@ -147,6 +147,8 @@ public class kvittoTest {
 		
 		Produkt produkt2 = new Produkt(2, "Gurka", "Grönsak", 1000, 6);
 		kvitto.addProdukt(produkt2);
+		assertNotNull(kvitto.print());
+		System.out.println(kvitto.print());
 		assertEquals(7000, kvitto.getTotalPris().getPengar());
 		assertEquals(0, kvitto.getTotalRabatt().getPengar());
 		

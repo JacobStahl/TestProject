@@ -118,8 +118,8 @@ public class Kvitto {
 			if (kund.getRabattTyp()!=null)
 		utskrift += "Kundrabatt: " + kund.getRabattTyp().berakna(new Pengar(100)).getPengar() + "%\n";
 		}
+		utskrift += "Totalt kr: " + getPris().print() + "\n";
 		if (totalRabatt.getPengar() != 0) {
-			utskrift += "Totalt kr: " + getPris().print() + "\n";
 			utskrift += "Rabatt: " + totalRabatt.print() + "\n";
 			utskrift += "Totalt innan rabatt: " + totalPris.print() + "\n";
 		}
