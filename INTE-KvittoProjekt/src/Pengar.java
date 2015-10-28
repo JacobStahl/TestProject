@@ -14,6 +14,9 @@ public class Pengar {
 	}
 	
 	public String print(){
+		if(oren < 10)
+			return kronor + "," + "0" + oren;
+		
 		return kronor + "," + oren;
 	}
 	
