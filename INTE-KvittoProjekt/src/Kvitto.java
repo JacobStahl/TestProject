@@ -77,7 +77,8 @@ public class Kvitto {
 	}
 
 	public Date getDate() {
-		return datum;
+	return (Date)datum.clone();
+		
 	}
 
 	public Pengar getPris() {

@@ -1,9 +1,8 @@
 import static org.junit.Assert.*;
-import org.junit.Before;
 import org.junit.Test;
 
 
-public class kundTest {
+public class Kundtest {
 	
 	private Kund k;
 	

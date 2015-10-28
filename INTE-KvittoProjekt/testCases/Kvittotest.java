@@ -8,7 +8,7 @@ import java.util.Date;
 import org.junit.Test;
 
 
-public class kvittoTest {
+public class Kvittotest {
 	
 	private Kvitto kvitto;
 

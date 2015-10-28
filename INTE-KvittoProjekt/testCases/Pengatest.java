@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-public class pengaTest {
+public class Pengatest {
 
 
 	

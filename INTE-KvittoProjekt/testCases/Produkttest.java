@@ -1,7 +1,7 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class produktTest {
+public class Produkttest {
 	
 private Produkt p;
 	

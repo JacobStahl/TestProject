@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-public class ProfilerTest {
+public class Profilertest {
 	
 	@Test
 	public void test(){

@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-public class rabattTest {
+public class Rabattest {
 
 	
 	private Kund k;
